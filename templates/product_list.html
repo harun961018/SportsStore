@@ -1,14 +1,21 @@
 {{ layout "store_layout.html" }}
-{{ $context := . }}
-{{ range .Products }}
-<div>
-    {{.ID}}, {{ .Name }}, {{ printf "$%.2f" .Price }}, {{ .CategoryName }}
-</div>
-{{ end }}
-{{ range .PageNumbers}}
-    {{ if eq $context.Page .}}
-        {{ . }}
-    {{ else }}
-        <a href="{{ call $context.PageUrlFunc . }}">{{ . }}</a>
+{{ define "left_column" }}
+    Put something useful here
+{{end}}
+{{ define "right_column" }}
+    {{ $context := . }}
+    {{ range $context.Products }}
+        <div class="card card-outline-primary m-1 p-1">
+            <div class="bg-faded p-1">
+                <h4>
+                    {{ .Name }}
+                    <span class="badge rounded-pill bg-primary" style="float:right">
+                        <small>{{ printf "$%.2f" .Price }}</small>
+                    </span>
+                </h4>
+            </div>
+            <div class="card-text p-1">{{ .Description }}</div>
+        </div>
     {{ end }}
-{{ end }}
+    {{ template "page_buttons.html" $context }}
+{{end}}
