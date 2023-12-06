@@ -31,7 +31,11 @@
             "GetOrders": "sql/get_orders.sql",
             "GetOrdersLines": "sql/get_orders_lines.sql",
             "SaveOrder": "sql/save_order.sql",
-            "SaveOrderLine": "sql/save_order_line.sql"
+            "SaveOrderLine": "sql/save_order_line.sql",
+            "SaveProduct":   "sql/save_product.sql",
+            "UpdateProduct":    "sql/update_product.sql",
+            "SaveCategory":     "sql/save_category.sql",
+            "UpdateCategory":   "sql/update_category.sql"
         }
     }
 }

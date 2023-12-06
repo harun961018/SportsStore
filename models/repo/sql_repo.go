@@ -29,5 +29,9 @@ type SqlCommands struct {
 	GetOrders,
 	GetOrdersLines,
 	SaveOrder,
-	SaveOrderLine *sql.Stmt
+	SaveOrderLine,
+	SaveProduct,
+	UpdateProduct,
+	SaveCategory,
+	UpdateCategory *sql.Stmt
 }
