@@ -11,3 +11,10 @@ INSERT INTO Products(Id, Name, Description, Category, Price) VALUES
 	(7, "Unsteady Chair", "Secretly give your opponent a disadvantage", 3, 29.95),	
 	(8, "Human Chess Board", "A fun game for the family", 3, 75),	
 	(9, "Bling-Bling King", "Gold-plated, diamond-studded King", 3, 1200);
+
+INSERT INTO Orders(Id, Name, StreetAddr, City, Zip, Country, Shipped) VALUES
+	(1, "Alice", "123 Main St", "New Town", "12345", "USA", false),
+	(2, "Bob", "The Grange", "Upton", "UP12 6YT", "UK", false);
+
+INSERT INTO OrderLines(Id, OrderId, ProductId, Quantity) VALUES
+	(1, 1, 1, 1), (2, 1, 2, 2), (3, 1, 8, 1), (4, 2, 5, 2);
