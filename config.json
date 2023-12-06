@@ -35,7 +35,8 @@
             "SaveProduct":   "sql/save_product.sql",
             "UpdateProduct":    "sql/update_product.sql",
             "SaveCategory":     "sql/save_category.sql",
-            "UpdateCategory":   "sql/update_category.sql"
+            "UpdateCategory":   "sql/update_category.sql",
+            "UpdateOrder":  "sql/update_order.sql"
         }
     }
 }
