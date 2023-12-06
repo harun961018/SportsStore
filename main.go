@@ -15,7 +15,8 @@ import (
 
 func registerServices() {
 	services.RegisterDefaultServices()
-	repo.RegisterMemoryRepoService()
+	// repo.RegisterMemoryRepoService()
+	repo.RegisterSqlRepositoryService()
 	sessions.RegisterSessionService()
 	cart.RegisterCartService()
 }
