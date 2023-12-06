@@ -54,6 +54,7 @@ func createPipeline() pipeline.RequestPipeline {
 			// handling.HandlerEntry{"admin", admin.OrdersHandler{}},
 			// handling.HandlerEntry{"admin", admin.DatabaseHandler{}},
 			handling.HandlerEntry{"", admin.AuthenticationHandler{}},
+			handling.HandlerEntry{"api", store.RestHandler{}},
 		).AddMethodAlias("/", store.ProductHandler.GetProducts, 0, 1).
 			AddMethodAlias("/products[/]?[A-z0-9]*?",
 				store.ProductHandler.GetProducts, 0, 1))
