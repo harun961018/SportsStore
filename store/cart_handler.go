@@ -28,6 +28,13 @@ func (handler CartHandler) GetCart() actionresults.ActionResult {
 	})
 }
 
+func (handler CartHandler) GetWidget() actionresults.ActionResult {
+	return actionresults.NewTemplateAction("cart_widget.html", CartTemplateContext{
+		Cart:    handler.Cart,
+		CartUrl: handler.mustGenerateUrl(CartHandler.GetCart),
+	})
+}
+
 type CartProductReference struct {
 	ID int
 }
