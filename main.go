@@ -23,7 +23,8 @@ func createPipeline() pipeline.RequestPipeline {
 		&basic.StaticFileComponent{},
 		handling.NewRouter(
 			handling.HandlerEntry{"", store.ProductHandler{}},
-		).AddMethodAlias("/", store.ProductHandler.GetProducts),
+		).AddMethodAlias("/", store.ProductHandler.GetProducts, 1).
+			AddMethodAlias("/products", store.ProductHandler.GetProducts, 1),
 	)
 }
 func main() {

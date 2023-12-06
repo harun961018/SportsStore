@@ -1,6 +1,7 @@
 package repo
 
 import (
+	"math"
 	"platform/services"
 	"sportsstore/models"
 )
@@ -32,4 +33,16 @@ func (repo *MemoryRepo) GetProducts() (results []models.Product) {
 }
 func (repo *MemoryRepo) GetCategories() (results []models.Category) {
 	return repo.categories
+}
+
+func (repo *MemoryRepo) GetProductPage(page, pageSize int) ([]models.Product, int) {
+	return getPage(repo.products, page, pageSize), len(repo.products)
+}
+func getPage(src []models.Product, page, pageSize int) []models.Product {
+	start := (page - 1) * pageSize
+	if page > 0 && len(src) > start {
+		end := (int)(math.Min((float64)(len(src)), (float64)(start+pageSize)))
+		return src[start:end]
+	}
+	return []models.Product{}
 }

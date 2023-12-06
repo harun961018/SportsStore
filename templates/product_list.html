@@ -1,6 +1,14 @@
 {{ layout "store_layout.html" }}
+{{ $context := . }}
 {{ range .Products }}
 <div>
     {{.ID}}, {{ .Name }}, {{ printf "$%.2f" .Price }}, {{ .CategoryName }}
 </div>
+{{ end }}
+{{ range .PageNumbers}}
+    {{ if eq $context.Page .}}
+        {{ . }}
+    {{ else }}
+        <a href="{{ call $context.PageUrlFunc . }}">{{ . }}</a>
+    {{ end }}
 {{ end }}
