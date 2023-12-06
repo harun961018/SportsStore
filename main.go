@@ -6,14 +6,18 @@ import (
 	"platform/pipeline"
 	"platform/pipeline/basic"
 	"platform/services"
+	"platform/sessions"
 	"sportsstore/models/repo"
 	"sportsstore/store"
+	"sportsstore/store/cart"
 	"sync"
 )
 
 func registerServices() {
 	services.RegisterDefaultServices()
 	repo.RegisterMemoryRepoService()
+	sessions.RegisterSessionService()
+	cart.RegisterCartService()
 }
 func createPipeline() pipeline.RequestPipeline {
 	return pipeline.CreatePipeline(
@@ -21,9 +25,11 @@ func createPipeline() pipeline.RequestPipeline {
 		&basic.LoggingComponent{},
 		&basic.ErrorComponent{},
 		&basic.StaticFileComponent{},
+		&sessions.SessionComponent{},
 		handling.NewRouter(
 			handling.HandlerEntry{"", store.ProductHandler{}},
 			handling.HandlerEntry{"", store.CategoryHandler{}},
+			handling.HandlerEntry{"", store.CartHandler{}},
 		).AddMethodAlias("/", store.ProductHandler.GetProducts, 0, 1).
 			AddMethodAlias("/products[/]?[A-z0-9]*?",
 				store.ProductHandler.GetProducts, 0, 1),

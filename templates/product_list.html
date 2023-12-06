@@ -1,8 +1,10 @@
 {{ layout "store_layout.html" }}
+
 {{ define "left_column" }}
     {{ $context := . }}
     {{ handler "category" "getbuttons" $context.SelectedCategory}}
 {{end}}
+
 {{ define "right_column" }}
     {{ $context := . }}
     {{ range $context.Products }}
@@ -15,7 +17,16 @@
                     </span>
                 </h4>
             </div>
-            <div class="card-text p-1">{{ .Description }}</div>
+            <div class="card-text p-1">
+                <form method="POST" action="{{ $context.AddToCartUrl }}">
+                    {{ .Description }}
+                    <input type="hidden" name="id" value="{{.ID}}" />
+                    <button type="submit"class="btn btn-success btn-sm pull-right" 
+                        style="float:right">
+                            Add To Cart
+                    </button>                    
+                </form>
+            </div>
         </div>
     {{ end }}
     {{ template "page_buttons.html" $context }}
