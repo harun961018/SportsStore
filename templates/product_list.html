@@ -1,6 +1,7 @@
 {{ layout "store_layout.html" }}
 {{ define "left_column" }}
-    Put something useful here
+    {{ $context := . }}
+    {{ handler "category" "getbuttons" $context.SelectedCategory}}
 {{end}}
 {{ define "right_column" }}
     {{ $context := . }}
